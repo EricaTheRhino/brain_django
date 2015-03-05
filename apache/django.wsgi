@@ -2,7 +2,7 @@ import os
 import sys
 import site
 
-proj_path = '/home/pi/ecsrhino/brain/'
+proj_path = '/var/www/brain/'
 
 prev_sys_path = list(sys.path)
 site.addsitedir(proj_path + 'venv/lib/python2.7/site-packages')
@@ -15,8 +15,8 @@ for item in list(sys.path):
     sys.path.remove(item)
 sys.path[:0] = new_sys_path
 
-sys.path.insert(0,'/home/pi/ecsrhino/')
-sys.path.insert(0,'/home/pi/ecsrhino/brain/')
+sys.path.insert(0,'/var/www/')
+sys.path.insert(0,'/var/www/brain/')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'brain.settings'
 import django.core.handlers.wsgi
