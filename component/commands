@@ -1,0 +1,11 @@
+Available commands:
+
+righteye.lights.blink {'time':'200'} # in ms
+righteye.lights.level {'level':'0.3'} # 0-1
+righteye.servo.direction {'direction':'0.5'} # 0 = look left, 1 = look right
+righteye.track.face {'toggle':'1'} # 0 = off, 1 = on
+
+lefteye.lights.blink {'time':'200'} # in ms
+lefteye.lights.level {'level':'0.3'} # 0-1
+lefteye.servo.direction {'direction':'0.5'} # 0 = look left, 1 = look right
+lefteye.track.face {'toggle':'1'} # 0 = off, 1 = on

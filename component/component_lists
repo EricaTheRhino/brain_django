@@ -1,0 +1,20 @@
+# Command handlers
+
+# Sound Component
+# Ear Component
+# Horn Component
+# Light Component
+# Video Component
+
+# Eye Light Component
+
+
+# Eye: Face / QR / Motion
+# 'Idle'
+
+
+
+Idle timer:
+- New non-idle comes in, clear idle number
+- Every N minutes, idle.idle triggered
+- Increments idle number

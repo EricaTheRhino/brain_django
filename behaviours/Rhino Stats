@@ -1,0 +1,13 @@
+Rhino Stats
+
+
+fullness 1 - 10: Starving - Full
+energy 1 - 10: Asleep - Awake
+mood 1 - 10: Sad - Happy
+interest 1 - 10: Bored - Interested
+
+
+XXX: Temperature
+
+rhino.idle - makes the rhino a bit more bored
+rhino.reset - resets all stats (to random-ish values)

@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	<div class="span4">
+		<h4>Current State</h4>
+		<table class="table">
+			<thead>
+				<tr><th>Stat</th><th>Value</th></tr>
+			</thead>
+			<tbody class="stats-body">
+			</tbody>
+		</table>
+	</div>
+
+	<div class="span4 offset4">
+		<h3>Tests</h3>
+		<div class="input-append">
+		  <input class="span2" name="event" type="text">
+		  <button class="btn trigger btn-primary" type="button">Go!</button>
+		</div>
+		<div><button class="btn reset eventer btn-danger" data-event="brain.reset" type="button">Reset Rhino</button></div>
+
+
+		<hr />
+
+		<h3>Tests</h3>
+		<div>
+			<div class="btn-group">
+				<button class="eventer btn btn-large icon-eye-open" data-event="brain.test.eyes"></button>
+				<button class="eventer btn btn-large btn-normal btn-normal btn-normal icon-music" data-event="brain.test.sound"></button>
+				<button class="eventer btn btn-large btn-normal btn-normal icon-lightbulb" data-event="brain.test.lights"></button>
+				<button class="eventer btn btn-large btn-normal icon-leaf" data-event="interaction.chip"></button>
+				<button class="eventer btn btn-large btn-normal icon-qrcode" data-event="brain.test.qrscan"></button>
+				<button class="eventer btn btn-large icon-jpy" data-event="brain.test.ears"></button>
+				<button class="eventer btn btn-large icon-beaker" data-event="brain.test.full"></button>
+			</div>
+		</div>
+		<h3>Moods</h3>
+		<table>
+			<tr>
+				<td>
+					<i class="btn-large icon-food"></i>
+				</td>
+				<td>
+					<button class="eventer btn btn-large icon-caret-down dropdown-toggle" data-event="brain.admin.starving"></button>
+					<button class="eventer btn btn-large icon-caret-up dropdown-toggle" data-event="brain.admin.full"></button>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<i class="btn-large icon-bolt"></i>
+				</td>
+				<td>
+					<button class="eventer btn btn-large icon-caret-down dropdown-toggle" data-event="brain.admin.asleep"></button>
+					<button class="eventer btn btn-large icon-caret-up dropdown-toggle" data-event="brain.admin.awake"></button>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<i class="btn-large icon-smile"></i>
+				</td>
+				<td>
+					<button class="eventer btn btn-large icon-caret-down dropdown-toggle" data-event="brain.admin.sad"></button>
+					<button class="eventer btn btn-large icon-caret-up dropdown-toggle" data-event="brain.admin.happy"></button>
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<i class="btn-large icon-eye-close"></i>
+				</td>
+				<td>
+					<button class="eventer btn btn-large icon-caret-down dropdown-toggle" data-event="brain.admin.bored"></button>
+					<button class="eventer btn btn-large icon-caret-up dropdown-toggle" data-event="brain.admin.interested"></button>
+				</td>
+			</tr>
+		</table>
+		
+		<!--<h3>Scripts</h3>
+		<table class="table">
+			<thead>
+			<tr><th>#</th><th>Filename</th></tr>
+			</thead>
+			<tbody>
+	{% for script in rhinoscripts %}
+				<tr>
+				<td>{{ script.order }}</td>
+				<td>{{ script }}</td>
+				</tr>
+	{% endfor %}
+			</tbody>
+		</table>-->
+		<h3>Components</h3>
+		<table class="table">
+			<thead>
+			<tr><th>Name</th><th>URL</th></tr>
+			</thead>
+			<tbody>
+	{% for component in components %}
+				<tr>
+				<td>{{ component.name }}</td>
+				<td>{{ component.url }}</td>
+				</tr>
+	{% endfor %}
+			</tbody>
+		</table>
+
+	</div>
+</div>
+
+{% csrf_token %}
+{% endblock %}
+
+{% block script %}
+<script language="javascript">
+jQuery(function($) {
+
+	var getState = function() {
+		$.get('{% url get_state %}', function(state) {
+			$(".longterm-body").empty();
+			$(".shortterm-body").empty();
+			$(".stats-body").empty();
+			$(".messages-body").empty();
+			$(".moods-body").empty();
+
+			$.each(state.messages, function(index, message) {
+				var tr = $('<tr>');
+				var m_td = $('<td>');
+				m_td.text(message);
+				tr.append(m_td);
+				$(".messages-body").append(tr);
+			});
+
+			$.each(state.moods, function(index, mood) {
+				var tr = $('<tr>');
+				var m_td = $('<td>');
+				m_td.text(mood);
+				tr.append(m_td);
+				$(".moods-body").append(tr);
+			});
+
+			$.each(state.stats, function(stat_name, value) {
+				var tr = $('<tr>');
+				var st_td = $('<td>');
+				st_td.text(stat_name);
+				tr.append(st_td);
+
+				var vl_td = $('<td>');
+				vl_td.text(value);
+				tr.append(vl_td);
+				$(".stats-body").append(tr);
+
+			});
+
+			$.each(state.long_term, function(event_name, count) {
+				var tr = $('<tr>');
+				var ev_td = $('<td>');
+				ev_td.text(event_name);
+				tr.append(ev_td);
+
+				var cn_td = $('<td>');
+				cn_td.text(count);
+				tr.append(cn_td);
+
+				$(".longterm-body").append(tr);
+
+			});
+
+			$.each(state.short_term, function(index, value) {
+				var tr = $('<tr>');
+				var ev_td = $('<td>');
+				ev_td.text(value.event);
+				tr.append(ev_td);
+
+				var ct_cd = $('<td>');
+				var date = new Date(value.created*1000);
+				var dstr = $.datepicker.formatDate('d M yy', date)+' '+date.toLocaleTimeString();;
+				ct_cd.text(dstr);
+				tr.append(ct_cd);
+				$(".shortterm-body").append(tr);
+
+			});
+		});
+	}
+
+	$(".trigger").click(function() {
+		$.post('{% url add_event %}', JSON.stringify({'event':$('input[name="event"]').val(), 'params':{'qr':'grass'}}), function(data) {
+			getState();
+		});
+	});
+
+	$(".eventer").click(function() {
+		var ev = $(this).data("event");
+		$.post('{% url add_event %}', JSON.stringify({'event':ev, 'params':{}}), function(data) {
+			getState();
+		});
+	});
+
+	getState();
+});
+</script>
+{% endblock %}

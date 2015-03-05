@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row">
+	<dl class="span12 moodchart" style="width:70%">
+			<dt>Energy</dt>
+			<dd><div id="data-one" class="bar energy" style="width: {{mood_map.e.percent}}%">{{mood_map.e.text}}<span class="hidden-phone"> ({{mood_map.e.percent}}%)</span></div></dd>
+
+			<dt>Mood</dt>
+			<dd><div id="data-two" class="bar mood" style="width: {{mood_map.m.percent}}%">{{mood_map.m.text}}<span class="hidden-phone">  ({{mood_map.m.percent}}%)</span></div></dd>
+
+			<dt>Interest</dt>
+			<dd><div id="data-three" class="bar interest" style="width: {{mood_map.i.percent}}%">{{mood_map.i.text}}<span class="hidden-phone">  ({{mood_map.i.percent}}%)</span></div></dd>
+
+			<dt>Fullness</dt>
+			<dd><div id="data-four" class="bar fullness" style="width: {{mood_map.f.percent}}%">{{mood_map.f.text}}<span class="hidden-phone">  ({{mood_map.f.percent}}%)</span></div></dd>
+	</dl>
+</div>
+<div class="row">
+	<a href="/" class="span12 btn btn-large">Back</a>
+</div>
+{% endblock %}

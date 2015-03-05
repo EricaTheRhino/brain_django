@@ -1,0 +1,45 @@
+Notes for energy:
+
+# While sleeping, energy 'buffer' increases
+# Once woken, energy is set to that value
+# e.g. energy at 0, recharges over 6 hours. Ideally increase the rate of increase up to that time, so waking up early means the rhino is tireder. i.e. if at 0, and woken up an hour later, is still very tired.
+# Energy begins at R*'charged' value, moves to full charge after an hour, then declines steadily to 0.
+# Some food increases e (up to a limit)
+
+
+
+y=mx+c
+
+
+5=6m+4
+1=6m
+m=1/6
+
+c=4
+
+
+y_0=(0.75)*y_a
+
+y_a=5
+x_a=12
+x_b=144
+
+
+If x <= x_a:
+y = (0.25y_a/x_a)x + y_0
+
+
+if x > x_a:
+
+0=m(x_b)+c
+y_a=m(x_a)+c
+
+Gradient:
+
+m = -y_a/(x_b-x_a)
+
+c=y_a(x_b)/(x_b-x_a)
+
+
+
+c = -m(x_b)

@@ -1,0 +1,27 @@
+Installing
+----------
+
+Quick installing on Ubuntu. You'll need Python and Redis installed
+(apt-get install redis-server should do the trick for the latter).
+
+> virtualenv venv
+> source venv/bin/activate
+> pip install -r requirements.txt
+> python manage runserver (starts the web server)
+
+The rhino brain receives events at /events/ via POST, in JSON form (the
+JSON should be the value of the 'json' key in the query). It has a very
+simple structure, shown below: 'event' indicates the sensor from which
+it came ('vision') and the event itself ('scanned'). 'params' can be
+any values in a dictionary (in this case, the scanned item).
+
+{
+	'event':'vision.scanned_qr',
+	'params': {
+		'item':'leaf'
+	}
+}
+
+You can go to /state/ to see the current state of the rhino (long_term
+contains counts of the various events, short_term contains the 10 most
+recent events).

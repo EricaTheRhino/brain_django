@@ -1,0 +1,58 @@
+dt {
+	float: left;
+	padding: 0px;
+}
+
+.cam {
+	width: 352px;
+	height: 288px;
+	padding: 0.1em;
+}
+
+.licon {
+	min-width: 1em;
+}
+
+.sounds .btn-group {
+	margin-left: 0px;
+}
+
+.energy {
+	background: -webkit-gradient(linear, left top, left bottom, from(#0353a9), to(#00356e));
+	background-color: #1f6e00;
+}
+
+.mood {
+	background: -webkit-gradient(linear, left top, left bottom, from(#a90329), to(#6d0019));
+	background-color: #1f6e00;
+}
+
+.interest {
+	background: -webkit-gradient(linear, left top, left bottom, from(#32a903), to(#1f6e00));
+	background-color: #1f6e00;
+}
+
+.fullness {
+	background: -webkit-gradient(linear, left top, left bottom, from(#ff7617), to(#ba550f));
+	background-color: #1f6e00;
+}
+
+.menubtn {
+	margin-bottom: 0.2em;
+}
+
+.bar {
+	margin-bottom: 10px;
+	color: #fff;
+	padding: 4px;
+	text-align: right;
+	-webkit-box-reflect: below 0 -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.25)));
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	border-radius: 2px;
+	-webkit-animation-name:bar;
+	-webkit-animation-duration:0.5s;
+	-webkit-animation-iteration-count:1;
+	-webkit-animation-timing-function:ease-out;
+	margin-left: 4.5em;
+}
