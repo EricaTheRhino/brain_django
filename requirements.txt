@@ -11,6 +11,7 @@ django-celery==3.0.17
 kombu==2.5.10
 mosquitto==1.2.3
 oauthlib==0.7.2
+pyga==2.5.0
 python-dateutil==2.1
 pytz==2013b
 redis==2.7.2
