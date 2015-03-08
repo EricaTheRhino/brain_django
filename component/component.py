@@ -7,7 +7,7 @@ import os
 d = Daemonizer(cherrypy.engine)
 d.subscribe()
 cherrypy.engine.autoreload.unsubscribe()
-BRAIN_URL = 'http://brain.ericatherhino.test'
+BRAIN_URL = 'http://brain.ericatherhino.local'
 
 class RhinoComponent(object):
 

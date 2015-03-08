@@ -10,7 +10,7 @@ class LeftEyeComponent(RhinoComponent):
 
 	@cherrypy.expose
 	def commands(self):
-		EYE_URL = 'http://left-eye.ericatherhino.test:8182/'
+		EYE_URL = 'http://left-eye.ericatherhino.local:8182/'
 	 	body = simplejson.loads(cherrypy.request.body.read())
 		data = body['data']
 
@@ -28,7 +28,7 @@ class LeftEyeComponent(RhinoComponent):
 
 config = {
 	'name':'lefteye',
-	'host':'left-eye.ericatherhino.test',
+	'host':'left-eye.ericatherhino.local',
 	'port': 8000
 }
 

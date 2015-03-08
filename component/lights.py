@@ -39,7 +39,7 @@ class LightsComponent(RhinoComponent):
 
 config = {
 	'name':'lights',
-	'host':'mech.ericatherhino.test',
+	'host':'mech.ericatherhino.local',
 	'port': 8003
 }
 

@@ -47,7 +47,7 @@ class LeftEarComponent(RhinoComponent):
 
 config = {
 	'name':'leftear',
-	'host':'mech.ericatherhino.test',
+	'host':'mech.ericatherhino.local',
 	'port': 8000
 }
 
