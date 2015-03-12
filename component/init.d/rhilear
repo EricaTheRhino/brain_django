@@ -9,7 +9,7 @@
 # Short-Description: rhino left ear component 
 ### END INIT INFO
 
-DAEMON="/home/pi/ecsrhino/brain/component/left-ear.py"
+DAEMON="/var/www/brain/component/left-ear.py"
 DAEMONUSER="pi"
 DEAMON_NAME="left-ear.py"
 

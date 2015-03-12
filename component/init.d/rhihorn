@@ -9,7 +9,7 @@
 # Short-Description: rhino horn component 
 ### END INIT INFO
 
-DAEMON="/home/pi/ecsrhino/brain/component/horn.py"
+DAEMON="/var/www/brain/component/horn.py"
 DAEMONUSER="root"
 DEAMON_NAME="horn.py"
 

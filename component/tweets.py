@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/var/www/brain/venv/bin/python
 # -*- coding: utf-8 -*-
 
 from tweepy.streaming import StreamListener
@@ -17,7 +17,7 @@ if fpid != 0:
 
 from settings import settings as twitter_settings
 
-proj_path = '/home/pi/ecsrhino/brain/'
+proj_path = '/var/www/brain/'
 prev_sys_path = list(sys.path)
 sys.path.insert(0, proj_path + 'venv/lib/python2.7/site-packages')
 # re-order sys.path so that new directories are at the front
@@ -28,8 +28,8 @@ for item in list(sys.path):
     sys.path.remove(item)
 sys.path[:0] = new_sys_path
 
-sys.path.insert(0,'/home/pi/ecsrhino/')
-sys.path.insert(0,'/home/pi/ecsrhino/brain/')
+sys.path.insert(0,'/var/www/')
+sys.path.insert(0,'/var/www/brain/')
 
 os.environ['DJANGO_SETTINGS_MODULE'] = 'brain.settings'
 from django.conf import settings

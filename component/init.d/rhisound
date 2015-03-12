@@ -9,7 +9,7 @@
 # Short-Description: rhino sound component 
 ### END INIT INFO
 
-DAEMON="/home/pi/ecsrhino/brain/component/sound.py"
+DAEMON="/var/www/brain/component/sound.py"
 DAEMONUSER="pi"
 DEAMON_NAME="sound.py"
 

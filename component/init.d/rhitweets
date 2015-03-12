@@ -9,7 +9,7 @@
 # Short-Description: rhino twittering component 
 ### END INIT INFO
 
-DAEMON="/home/pi/ecsrhino/brain/component/tweets.py"
+DAEMON="/var/www/brain/component/tweets.py"
 DAEMONUSER="root"
 DEAMON_NAME="tweets.py"
 

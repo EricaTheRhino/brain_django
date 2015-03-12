@@ -9,7 +9,7 @@
 # Short-Description: rhino buttons component 
 ### END INIT INFO
 
-DAEMON="/home/pi/ecsrhino/brain/component/buttons.py"
+DAEMON="/var/www/brain/component/buttons.py"
 DAEMONUSER="root"
 DEAMON_NAME="buttons.py"
 

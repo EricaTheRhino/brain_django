@@ -9,7 +9,7 @@
 # Short-Description: rhino left eye
 ### END INIT INFO
 
-DAEMON="/home/pi/component/left-eye.py"
+DAEMON="/var/www/brain/component/left-eye.py"
 DAEMONUSER="pi"
 DEAMON_NAME="left-eye.py"
 

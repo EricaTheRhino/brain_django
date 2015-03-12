@@ -9,7 +9,7 @@
 # Short-Description: rhino lights component 
 ### END INIT INFO
 
-DAEMON="/home/pi/ecsrhino/brain/component/lights.py"
+DAEMON="/var/www/brain/component/lights.py"
 DAEMONUSER="root"
 DAEMON_NAME="lights.py"
 
