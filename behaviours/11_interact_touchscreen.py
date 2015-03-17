@@ -1,5 +1,6 @@
 # coding: utf-8
 import random
+import time
 latest = get_latest()
 
 if latest['event'] == 'interaction.touchscreen..sound':
@@ -32,10 +33,14 @@ if latest['event'] == 'interaction.touchscreen.hornlights':
 
 if latest['event'] == 'interaction.touchscreen.bodylights':
         mqtt_pubevent(latest['event'], latest['params'], 'Watch my lights flicker!');
-	trigger('lights.colours', {'theme':'body.random'}, True)
-#	trigger('lights.colours', {'theme':'body.red'}, True)
-#	trigger('lights.colours', {'theme':'body.green'}, True)
-#	trigger('lights.colours', {'theme':'body.blue'}, True)
-#	trigger('lights.colours', {'theme':'body.yellow'}, True)
-#	trigger('lights.colours', {'theme':'body.white'}, True)
+#	trigger('lights.colours', {'theme':'body.random'}, True)
+	trigger('lights.colours', {'theme':'body.red'}, True)
+	time.sleep(1)
+	trigger('lights.colours', {'theme':'body.green'}, True)
+        time.sleep(1)
+	trigger('lights.colours', {'theme':'body.blue'}, True)
+        time.sleep(1)
+	trigger('lights.colours', {'theme':'body.yellow'}, True)
+        time.sleep(1)
+	trigger('lights.colours', {'theme':'body.white'}, True)
 #	trigger('lights.colours', {'theme':'body.off'}, True)

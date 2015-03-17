@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/var/www/brain/venv/bin/python
 # simple test of PIR pin
 
 # This sets up django env

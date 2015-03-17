@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/var/www/brain/venv/bin/python
 
 import cherrypy
 import simplejson
@@ -21,7 +21,6 @@ class SoundComponent(RhinoComponent):
 
 config = {
 	'name':'sound',
-	#'host':'brain.ericatherhino.text',
 	'host':'localhost',
 	'port': 8001
 }
