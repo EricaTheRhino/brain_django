@@ -3,7 +3,7 @@ import random
 import time
 latest = get_latest()
 
-if latest['event'] == 'interaction.touchscreen..sound':
+if latest['event'] == 'interaction.touchscreen.sound':
         play_sound(random.choice(['Rhinoceros3', 'Rhinoceros2']))
 
 if latest['event'] == 'interaction.touchscreen.eyes':
