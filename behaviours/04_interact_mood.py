@@ -4,14 +4,8 @@ import random
 import time
 latest = get_latest()
 
-# Config moved to 00_config.py 
-#TICKLE_MAX = 10
-#TICKLE_M_INC = '1.0'
-#TICKLE_E_DEC = '0.2'
-#TICKLE_M_DEC = '0.2'
-
 if latest['event'] == 'interaction.pir.detect':
-	inc_stat('interest', '0.2')
+	inc_stat('interest', PIR_I_INCREMENT)
 	mqtt_pubevent(latest['event'], latest['params'], 'Ooo what\'s that! Something moved!')
 	trigger('righteye.servo.direction', {'dir':0}, True)
 	trigger('lefteye.servo.direction', {'dir':0})

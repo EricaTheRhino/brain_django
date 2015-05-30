@@ -1,30 +1,19 @@
 # coding: utf-8
 
-# Config moved to 00_config.py
-#FEED_MAX = 3
-
-#FEED_F_INC = '0.5'
-#FEED_I_INC = '1.0'
-#FEED_OVERFULL_M_DEC = '0.2'
-#FEED_OVERFEED_M_DEC = '0.2'
-
-#FEED_VFULL_E_DEC = '0.4'
-#FEED_FULL_E_DEC = '0.2'
-
 if latest['event'] == 'interaction.chin.press':# and latest['params']['state'] == 1:
-	existing = get_in_last(300, latest['event'])
+	existing = get_in_last(RECENT_SECS, latest['event'])
 	mqtttext = 'Being Fed: '
 	if get_stat('fullness') == 6:
 		# Trying to overfeed - so maybe fart...
 		if random.randint(1,2) == 1:
-			play_sound('fart')
+			play_sound(OVERFEED_SOUND)
 		# And get a little unhappy
 		mqtttext += 'Definitely full now, (I would stop feeding me, as I could become quite grumpy)'
 		dec_stat('mood', FEED_OVERFULL_M_DEC)
 
 	elif len(existing) >= FEED_MAX:
 		dec_stat('mood', FEED_OVERFEED_M_DEC)
-		play_sound('fart')
+		play_sound(OVERFEED_SOUND)
 		mqtttext += 'Feeling a bit sick now (Have been overfed!)'
 		inc_stat('fullness', FEED_F_INC)
 	else:
@@ -46,9 +35,9 @@ if latest['event'] == 'interaction.chin.press':# and latest['params']['state'] =
 	mqtt_pubevent(latest['event'], latest['params'], mqtttext)
 
 if latest['event'] == 'interaction.righteye.scan':
-	play_sound('Rhinoceros3')
+	play_sound(EYESCAN_SOUND)
 	trigger('rightear.servo.waggle', {'angle':-40, 'speed':1}, True)
 
 if latest['event'] == 'interaction.lefteye.scan':
-	play_sound('Rhinoceros3')
+	play_sound(EYESCAN_SOUND)
 	trigger('leftear.servo.waggle', {'angle':-40, 'speed':1}, True)

@@ -94,21 +94,18 @@ if latest['event'] == 'brain.idle_skip':
 		if nothing_happened:
 			rate = energy/Decimal(6.0)
 			# Try to get attention.
-			opt = random.choice([0,1,2,2, 2, 3, 3, 3])
+			opt = random.choice([0, 1, 2, 2, 2, 3, 3, 3])
 
 			if opt == 0:
 				if mood < 4:
 					if energy < 4:
 						trigger('horn.colours', {'theme':'red', 'time':500}, True)
 						random_ears(1)
-						#play_sound('Rhinoceros'+str(random.choice(['11', '12', '13'])))
 					else:
 						if random.choice([0,1,2,3,4,5]) == 3:
-							play_sound('Rhinoceros'+str(random.choice(['4', '5', '6', '7', '8'])))
+							play_sound(random.choice(IDLE_SOUNDS))
 						else:
 							random_eyes(1)
-				#else:
-				#	play_sound('Rhinoceros'+str(random.choice(['11', '12', '13'])))
 			if opt == 1:
 				random_eyes(rate)
 			if opt == 2 or opt == 3:
@@ -116,13 +113,13 @@ if latest['event'] == 'brain.idle_skip':
 	elif energy > 0:
 		opt = random.choice([0,1,2,3,4,5])
 		if opt == 0:
-			play_sound('yawn')
+			play_sound(IDLE_TIRED_SOUND)
 		elif opt == 1:
 			random_ears(1)
 		else:
 			random_eyes(1)
 	else:
 		if random.choice([0,1,2,3,4,5]) == 1:
-			play_sound('snore')
+			play_sound(IDLE_ASLEEP_SOUND)
 		else:
 			random_ears(1)

@@ -14,13 +14,13 @@ if latest['event'] == 'brain.test.full':
 	trigger('righteye.servo.direction', {'dir':1})
 	trigger('lefteye.servo.direction', {'dir':1})
 
-	play_sound('circle')
+	play_sound(TEST_START_SOUND)
 	# Test blink speeds
 	for x in range(150, 50, -50):
 		trigger('lefteye.lights.blink', {'time':x})
 		trigger('righteye.lights.blink', {'time':x})
 	# Test servo move
-	play_sound('Rhinoceros'+str(random.choice(['11', '12', '13'])))
+	play_sound(random.choice(TEST_SOUNDS))
 	trigger('righteye.servo.direction', {'dir':1})
 	trigger('righteye.servo.direction', {'dir':0})
 	trigger('righteye.servo.direction', {'dir':1})

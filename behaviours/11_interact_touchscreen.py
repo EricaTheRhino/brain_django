@@ -4,7 +4,7 @@ import time
 latest = get_latest()
 
 if latest['event'] == 'interaction.touchscreen.sound':
-        play_sound(random.choice(['Rhinoceros3', 'Rhinoceros2']))
+        play_sound(random.choice(TOUCHSCREEN_SOUNDS))
 
 if latest['event'] == 'interaction.touchscreen.eyes':
 	mqtt_pubevent(latest['event'], latest['params'], 'Look into my eyes!');
@@ -33,7 +33,6 @@ if latest['event'] == 'interaction.touchscreen.hornlights':
 
 if latest['event'] == 'interaction.touchscreen.bodylights':
         mqtt_pubevent(latest['event'], latest['params'], 'Watch my lights flicker!');
-#	trigger('lights.colours', {'theme':'body.random'}, True)
 	trigger('lights.colours', {'theme':'body.red'}, True)
 	time.sleep(1)
 	trigger('lights.colours', {'theme':'body.green'}, True)
@@ -43,4 +42,3 @@ if latest['event'] == 'interaction.touchscreen.bodylights':
 	trigger('lights.colours', {'theme':'body.yellow'}, True)
         time.sleep(1)
 	trigger('lights.colours', {'theme':'body.white'}, True)
-#	trigger('lights.colours', {'theme':'body.off'}, True)
