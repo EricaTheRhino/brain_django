@@ -21,4 +21,4 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'brain.settings'
 from django.conf import settings
 from processor import views
 print "Start"
-views.handle_event('interaction.chip.press', {'state':1})
+views.handle_event('interaction.pir.detect', {'state':0})

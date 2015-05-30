@@ -3,21 +3,20 @@
 import random
 import time
 latest = get_latest()
-
 if latest['event'] == 'interaction.pir.detect':
-	inc_stat('interest', PIR_I_INCREMENT)
+	inc_stat('interest', PIR_I_INC)
 	mqtt_pubevent(latest['event'], latest['params'], 'Ooo what\'s that! Something moved!')
-	trigger('righteye.servo.direction', {'dir':0}, True)
-	trigger('lefteye.servo.direction', {'dir':0})
-	trigger('righteye.servo.direction', {'dir':1}, True)
-	trigger('lefteye.servo.direction', {'dir':1})
 	trigger('righteye.servo.direction', {'dir':0.5}, True)
-	trigger('lefteye.servo.direction', {'dir':0.5})
-	trigger('righteye.servo.direction', {'dir':1}, True)
-	trigger('lefteye.servo.direction', {'dir':1})
-	trigger('righteye.servo.direction', {'dir':0.5}, True)
-	trigger('lefteye.servo.direction', {'dir':0.5})
-
+	trigger('lefteye.servo.direction', {'dir':1}, True)
+	trigger('righteye.servo.direction', {'dir':1}, False)
+	trigger('lefteye.servo.direction', {'dir':0}, True)
+	trigger('righteye.servo.direction', {'dir':0}, False)
+	trigger('lefteye.servo.direction', {'dir':1}, True)
+	trigger('righteye.servo.direction', {'dir':1}, False)
+	trigger('lefteye.servo.direction', {'dir':0}, True)
+	trigger('righteye.servo.direction', {'dir':0}, False)
+	trigger('lefteye.servo.direction', {'dir':0.5}, True)
+	trigger('righteye.servo.direction', {'dir':0.5}, False)
 
 if latest['event'] == 'interaction.chip.press' and latest['params']['state'] == 1:
 	existing = get_in_last(300, latest['event'])

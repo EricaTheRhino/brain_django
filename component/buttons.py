@@ -9,7 +9,6 @@ fpid = os.fork()
 if fpid != 0:
 	sys.exit(0)
 
-
 proj_path = '/var/www/brain/'
 prev_sys_path = list(sys.path)
 sys.path.insert(0, proj_path + 'venv/lib/python2.7/site-packages')
@@ -39,16 +38,16 @@ import random
 ####################
 
 # chin
-Apin = 24
-Bpin = 25
+Apin = 27
+Bpin = 18
 
 # chip
-Chipcenterpin=22
-Chipoutsidepin=23
+Chipcenterpin=23
+Chipoutsidepin=22
 
 #pir
 
-pirpin=27
+pirpin=24
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(Apin,GPIO.IN)
@@ -69,7 +68,7 @@ last_pir = 0
 
 CHIP_MAX = 3
 CHIN_MAX = 3
-PIR_MAX = 3 
+PIR_MAX = 30 
 
 def play_sound(name):
 	f = os.open('/tmp/soundpipe', os.O_WRONLY)
@@ -121,7 +120,7 @@ while True:
 	if ( pir != pircur):
 		pircur=pir
 		if pir == 0:
-			curr = time.clock()
+			curr = time.time()
 			if curr - last_pir > PIR_MAX:
 				tasks.trigger_event.apply_async(args=['interaction.pir.detect', {'state':pir}])
 				last_pir = curr
