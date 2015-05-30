@@ -16,7 +16,7 @@ if latest['event'] == 'interaction.chin.press':# and latest['params']['state'] =
 	mqtttext = 'Being Fed: '
 	if get_stat('fullness') == 6:
 		# Trying to overfeed - so maybe fart...
-		if random.randint(1,3) == 1:
+		if random.randint(1,2) == 1:
 			play_sound('fart')
 		# And get a little unhappy
 		mqtttext += 'Definitely full now, (I would stop feeding me, as I could become quite grumpy)'
