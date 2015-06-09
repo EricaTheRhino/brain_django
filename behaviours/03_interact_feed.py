@@ -35,9 +35,9 @@ if latest['event'] == 'interaction.chin.press':# and latest['params']['state'] =
 	mqtt_pubevent(latest['event'], latest['params'], mqtttext)
 
 if latest['event'] == 'interaction.righteye.scan':
-	play_sound(EYESCAN_SOUND)
+	play_qr_sound(latest['params']['qr'], EYESCAN_SOUND)
 	trigger('rightear.servo.waggle', {'angle':-40, 'speed':1}, True)
 
 if latest['event'] == 'interaction.lefteye.scan':
-	play_sound(EYESCAN_SOUND)
+	play_qr_sound(latest['params']['qr'], EYESCAN_SOUND)
 	trigger('leftear.servo.waggle', {'angle':-40, 'speed':1}, True)

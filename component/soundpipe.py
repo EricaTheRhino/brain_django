@@ -14,6 +14,7 @@ PIPE = '/tmp/soundpipe'
 print "Initialising"
 pygame.mixer.init()
 
+
 sounds = {
 	'Rhinoceros2':pygame.mixer.Sound('/usr/local/share/erica/sounds/Rhinoceros2.wav'),
 	'Rhinoceros3':pygame.mixer.Sound('/usr/local/share/erica/sounds/Rhinoceros3.ogg'),
@@ -35,6 +36,11 @@ sounds = {
 	'camera':pygame.mixer.Sound('/usr/local/share/erica/sounds/camera.wav'),
 	'fanfare':pygame.mixer.Sound('/usr/local/share/erica/sounds/fanfare.wav'),
 	'tweet':pygame.mixer.Sound('/usr/local/share/erica/sounds/tweet.ogg'),
+	'cricket': pygame.mixer.Sound('/usr/local/share/erica/sounds/cricket.wav'),
+	'football':pygame.mixer.Sound('/usr/local/share/erica/sounds/football.wav'),
+	'formula1':pygame.mixer.Sound('/usr/local/share/erica/sounds/formula1.wav'),
+	'skiing':pygame.mixer.Sound('/usr/local/share/erica/sounds/skiing.wav'),
+	'tennis':pygame.mixer.Sound('/usr/local/share/erica/sounds/tennis.wav'),
 }
 
 sounds['tweet'].set_volume(1.0)
