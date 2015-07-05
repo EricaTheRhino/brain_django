@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 import hashlib
 import sys
+import os
 
 
 from processor.sound import *
@@ -19,7 +20,8 @@ logger = logging.getLogger(__name__)
 
 def home(request):
 	redirect = request.GET.get('redirect', False)
-	lines = ["Touch my mouth to feed me!", "Look in my eyes and let me see you!", "Tickle my cheek to cheer me up!", 'Send me a tweet at @EricaTheRhino', "Check out my horn to see how I'm feeling!", '<img src="/static/img/qr.png"></img>&nbsp;<p>Show me a QR code and see what I can do!</p>']
+#	lines = ["Touch my mouth to feed me!", "Look in my eyes and let me see you!", "Tickle my cheek to cheer me up!", 'Send me a tweet at @EricaTheRhino', "Check out my horn to see how I'm feeling!", '<img src="/static/img/qr.png"></img>&nbsp;<p>Show me a QR code and see what I can do!</p>']
+	lines = ['<img src="/static/img/rounder.png" class="qr" width="200px" /><img src="static/img/smaller.png" class="qr" width="200px" /><img src="static/img/harder.png" class="qr" width="200px" /><img src="/static/img/colder.png" class="qr" width="200px" /><img src ="/static/img/faster.png" class="qr" width="200px" />&nbsp;<p>Try showing me some of these QR codes and see what my reaction is!</p>']
 
 	return render_to_response('website/index.html', {'lines':lines}, context_instance=RequestContext(request))
 
@@ -30,6 +32,18 @@ def mood(request):
 def mood_json(request):
         mood_map = get_mood_map()
 	return HttpResponse(simplejson.dumps(mood_map, encoding='latin-1'), mimetype='application/json')
+
+def volume(request):
+        volume = os.popen("/usr/local/sbin/erica/volume_control get").read().strip()
+	return HttpResponse(volume, mimetype='text/plain')
+
+def volume_down(request):
+	volume = os.popen("/usr/local/sbin/erica/volume_control down").read().strip()
+        return HttpResponse(volume, mimetype='text/plain')
+	
+def volume_up(request):
+	volume = os.popen("/usr/local/sbin/erica/volume_control up").read().strip()
+        return HttpResponse(volume, mimetype='text/plain')
 
 def credits(request):
 	return render_to_response('website/credits.html', context_instance=RequestContext(request))
