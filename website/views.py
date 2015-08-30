@@ -45,6 +45,14 @@ def volume_up(request):
 	volume = os.popen("/usr/local/sbin/erica/volume_control up").read().strip()
         return HttpResponse(volume, mimetype='text/plain')
 
+def power_off_code(request, num):
+	success = os.popen("/usr/local/sbin/erica/power_off_code "+num).read().strip()
+	return HttpResponse(success, mimetype='text/plain')
+
+def power_off(request):
+        os.system("nohup /usr/local/sbin/erica/power_off &")
+	return HttpResponse("Off", mimetype='text/plain')
+
 def credits(request):
 	return render_to_response('website/credits.html', context_instance=RequestContext(request))
 
