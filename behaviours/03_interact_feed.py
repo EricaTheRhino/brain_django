@@ -37,7 +37,13 @@ if latest['event'] == 'interaction.chin.press':# and latest['params']['state'] =
 if latest['event'] == 'interaction.righteye.scan':
 	play_qr_sound(latest['params']['qr'], EYESCAN_SOUND)
 	trigger('rightear.servo.waggle', {'angle':-40, 'speed':1}, True)
+	if latest['params']['qr'] in [ 'red', 'blue', 'green', 'yellow', 'white' ]:
+		lights_theme = 'body.' + latest['params']['qr'] + '.sub'
+		trigger('lights.colours', {'theme':lights_theme}, False)
 
 if latest['event'] == 'interaction.lefteye.scan':
 	play_qr_sound(latest['params']['qr'], EYESCAN_SOUND)
 	trigger('leftear.servo.waggle', {'angle':-40, 'speed':1}, True)
+	if latest['params']['qr'] in [ 'red', 'blue', 'green', 'yellow', 'white' ]:
+		lights_theme = 'body.' + latest['params']['qr'] + '.add'
+                trigger('lights.colours', {'theme':lights_theme}, False)
